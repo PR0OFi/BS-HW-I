@@ -53,7 +53,6 @@ public final class AttackSubsystemImpl implements AttackSubsystem {
     public PositiveInteger attack(Attackable target) {
         final PositiveInteger targetSize = target.getSize();
         final PositiveInteger targetSpeed = target.getCurrentSpeed();
-        final String targetName = target.getName();
         int sizeReductionModifier = 0;
         int speedReductionModifier = 0;
         if (targetSize.value() >= optimalSize.value()) {

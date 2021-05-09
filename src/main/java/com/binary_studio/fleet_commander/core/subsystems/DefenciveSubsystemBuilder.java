@@ -16,6 +16,30 @@ public final class DefenciveSubsystemBuilder {
 
 	private PositiveInteger pgRequirement;
 
+	public String getName() {
+		return name;
+	}
+
+	public PositiveInteger getImpactReduction() {
+		return impactReduction;
+	}
+
+	public PositiveInteger getShieldRegen() {
+		return shieldRegen;
+	}
+
+	public PositiveInteger getHullRegen() {
+		return hullRegen;
+	}
+
+	public PositiveInteger getCapacitorUsage() {
+		return capacitorUsage;
+	}
+
+	public PositiveInteger getPgRequirement() {
+		return pgRequirement;
+	}
+
 	public static DefenciveSubsystemBuilder named(String name) {
 		var builder = new DefenciveSubsystemBuilder();
 		builder.name = name;
@@ -49,8 +73,7 @@ public final class DefenciveSubsystemBuilder {
 	}
 
 	public DefenciveSubsystemImpl construct() {
-		return DefenciveSubsystemImpl.construct(this.name, this.pgRequirement, this.capacitorUsage,
-				this.impactReduction, this.shieldRegen, this.hullRegen);
+		return new DefenciveSubsystemImpl(this);
 	}
 
 }
