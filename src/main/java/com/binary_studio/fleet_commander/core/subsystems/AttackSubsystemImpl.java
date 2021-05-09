@@ -9,8 +9,14 @@ public final class AttackSubsystemImpl implements AttackSubsystem {
 	public static AttackSubsystemImpl construct(String name, PositiveInteger powergridRequirments,
 			PositiveInteger capacitorConsumption, PositiveInteger optimalSpeed, PositiveInteger optimalSize,
 			PositiveInteger baseDamage) throws IllegalArgumentException {
-		// TODO: Ваш код здесь :)
-		return null;
+
+		if (name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Name should be not null and not empty");
+		} else {
+			return AttackSubsystemBuilder.named(name).pg(powergridRequirments.value())
+					.capacitorUsage(capacitorConsumption.value()).optimalSpeed(optimalSpeed.value()).
+							optimalSize(optimalSize.value()).damage(baseDamage.value()).construct();
+		}
 	}
 
 	@Override
@@ -33,7 +39,7 @@ public final class AttackSubsystemImpl implements AttackSubsystem {
 
 	@Override
 	public String getName() {
-		// TODO: Ваш код здесь :)
+		// TODO
 		return null;
 	}
 
