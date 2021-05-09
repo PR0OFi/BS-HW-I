@@ -40,20 +40,19 @@ public final class DefenciveSubsystemImpl implements DefenciveSubsystem {
 
 	@Override
 	public PositiveInteger getPowerGridConsumption() {
-		// TODO: Ваш код здесь :)
-		return null;
+
+		return pgRequirement;
 	}
 
 	@Override
 	public PositiveInteger getCapacitorConsumption() {
-		// TODO: Ваш код здесь :)
-		return null;
+
+		return capacitorUsage;
 	}
 
 	@Override
 	public String getName() {
-		// TODO: Ваш код здесь :)
-		return null;
+		return name;
 	}
 
 	@Override
