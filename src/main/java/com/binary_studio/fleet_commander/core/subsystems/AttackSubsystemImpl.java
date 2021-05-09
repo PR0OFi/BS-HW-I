@@ -6,29 +6,47 @@ import com.binary_studio.fleet_commander.core.subsystems.contract.AttackSubsyste
 
 public final class AttackSubsystemImpl implements AttackSubsystem {
 
+	private String name;
+
+	private PositiveInteger baseDamage;
+
+	private PositiveInteger optimalSize;
+
+	private PositiveInteger optimalSpeed;
+
+	private PositiveInteger capacitorUsage;
+
+	private PositiveInteger pgRequirement;
+
+	public AttackSubsystemImpl(AttackSubsystemBuilder builder){
+		this.name = builder.getName();
+		this.baseDamage = builder.getBaseDamage();
+		this.optimalSize = builder.getOptimalSize();
+		this.optimalSpeed = builder.getOptimalSpeed();
+		this.capacitorUsage = builder.getCapacitorUsage();
+		this.pgRequirement = builder.getPgRequirement();
+	}
+
 	public static AttackSubsystemImpl construct(String name, PositiveInteger powergridRequirments,
 			PositiveInteger capacitorConsumption, PositiveInteger optimalSpeed, PositiveInteger optimalSize,
 			PositiveInteger baseDamage) throws IllegalArgumentException {
 
 		if (name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Name should be not null and not empty");
-		} else {
-			return AttackSubsystemBuilder.named(name).pg(powergridRequirments.value())
-					.capacitorUsage(capacitorConsumption.value()).optimalSpeed(optimalSpeed.value()).
-							optimalSize(optimalSize.value()).damage(baseDamage.value()).construct();
-		}
+            throw new IllegalArgumentException("Name should be not null and not empty");}
+		return AttackSubsystemBuilder.named(name).pg(powergridRequirments.value())
+				.capacitorUsage(capacitorConsumption.value()).optimalSpeed(optimalSpeed.value()).
+						optimalSize(optimalSize.value()).damage(baseDamage.value()).construct();
 	}
 
 	@Override
 	public PositiveInteger getPowerGridConsumption() {
-		// TODO: Ваш код здесь :)
-		return null;
+
+		return pgRequirement;
 	}
 
 	@Override
 	public PositiveInteger getCapacitorConsumption() {
-		// TODO: Ваш код здесь :)
-		return null;
+		return capacitorUsage;
 	}
 
 	@Override
@@ -39,8 +57,8 @@ public final class AttackSubsystemImpl implements AttackSubsystem {
 
 	@Override
 	public String getName() {
-		// TODO
-		return null;
+
+		return name;
 	}
 
 }

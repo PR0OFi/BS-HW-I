@@ -19,9 +19,33 @@ public final class AttackSubsystemBuilder {
 	public static AttackSubsystemBuilder named(String name) {
 		var builder = new AttackSubsystemBuilder();
 		builder.name = name;
-
 		return builder;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public PositiveInteger getBaseDamage() {
+		return baseDamage;
+	}
+
+	public PositiveInteger getOptimalSize() {
+		return optimalSize;
+	}
+
+	public PositiveInteger getOptimalSpeed() {
+		return optimalSpeed;
+	}
+
+	public PositiveInteger getCapacitorUsage() {
+		return capacitorUsage;
+	}
+
+	public PositiveInteger getPgRequirement() {
+		return pgRequirement;
+	}
+
 
 	public AttackSubsystemBuilder pg(Integer val) {
 		this.pgRequirement = PositiveInteger.of(val);
@@ -49,8 +73,7 @@ public final class AttackSubsystemBuilder {
 	}
 
 	public AttackSubsystemImpl construct() {
-		return AttackSubsystemImpl.construct(this.name, this.pgRequirement, this.capacitorUsage, this.optimalSpeed,
-				this.optimalSize, this.baseDamage);
+		return new AttackSubsystemImpl(this);
 	}
 
 }
